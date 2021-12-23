@@ -5,7 +5,7 @@ import "testing"
 const TEST_INPUT = `199
 200
 208
-210	
+210
 200
 207
 240
@@ -15,7 +15,15 @@ const TEST_INPUT = `199
 
 func TestPartOne(t *testing.T) {
 
-	if Run(TEST_INPUT) != 7 {
+	if RunPartOne(TEST_INPUT) != 7 {
+		t.Error()
+	}
+
+}
+
+func TestPartTwo(t *testing.T) {
+
+	if RunPartTwo(TEST_INPUT) != 5 {
 		t.Error()
 	}
 

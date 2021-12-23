@@ -5,18 +5,43 @@ import (
 	"strings"
 )
 
-func Run(s string) (result int) {
+func atioarray(s string) (a []int) {
+	for _, row := range strings.Split(s, "\n") {
+		num, _ := strconv.Atoi(row)
+		a = append(a, num)
+	}
+	return
+}
 
-	rows := strings.Split(s, "\n")
-	prev, _ := strconv.Atoi(rows[0])
+func cumsum(a []int) (cs int) {
+	for _, v := range a {
+		cs = cs + v
+	}
+	return
+}
 
-	for _, row := range rows[1:] {
-		number, _ := strconv.Atoi(row)
-		if number > prev {
+func RunPartOne(s string) (result int) {
+	a := atioarray(s)
+	prev := a[0]
+	for _, itm := range a[1:] {
+		if itm > prev {
 			result = result + 1
 		}
-		prev = number
+		prev = itm
 	}
 
+	return
+}
+
+func RunPartTwo(s string) (result int) {
+	a := atioarray(s)
+	prev := cumsum(a[0:3])
+	for i := 1; i < len(a)-2; i++ {
+		ws := cumsum(a[i : i+3])
+		if ws > prev {
+			result = result + 1
+		}
+		prev = ws
+	}
 	return
 }
