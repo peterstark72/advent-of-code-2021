@@ -5,11 +5,6 @@ import (
 	"strings"
 )
 
-type Cmd struct {
-	Name  string
-	Value int
-}
-
 func Run(s string) int {
 
 	var h int
